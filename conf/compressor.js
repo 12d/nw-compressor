@@ -4,9 +4,15 @@
  * @descriptions
  */
 module.exports = {
-    compilerPath: {
-        google: 'E:\\tools\\compiler-latest\\compiler.jar',
-        yui: ''
+    compilers: {
+        google:{
+            gap: '--js',
+            commandLine: 'java -jar E:\\tools\\compiler-latest\\compiler.jar --js ${file} --js_output_file ${name}.min.js'
+        },
+        yui: {
+            gap: '',
+            commandLine: ''
+        }
     },
     vcs: 'tfs'
 }

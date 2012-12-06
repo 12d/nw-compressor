@@ -22,16 +22,21 @@ Compressor = function(vcs, engine){
 };
 
 Compressor.prototype = {
-    compress: function(dir){
-        vcs.checkout();
-        engine.compiler('dir');
-        vcs.checkin();
+    /**
+     *
+     * @param {File|Directory} files, files need to compress
+     */
+    compress: function(files){
+        var vcs = this.vcs;
+        vcs.checkout(files);
+        this.engine.compiler(files);
+        vcs.checkin(files);
     }
 };
 
 var compressor = new Compressor(vcs, engine);
 engine.setCompiler('google');
-compressor.compress();
+compressor.compress('a.js');
 
 
 
