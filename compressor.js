@@ -6,7 +6,7 @@
 
 var config = require('./conf/compressor.js'),
     Engine = require('./core/engine.js'),
-    VCS = require('.core/vcs.js'),
+    VCS = require('./core/vcs.js'),
     VCSPlugin = require('./lib/vcs/'+config.vcs+'.js'),
     Compressor,
     vcs, engine;
@@ -23,20 +23,24 @@ Compressor = function(vcs, engine){
 
 Compressor.prototype = {
     /**
-     *
      * @param {File|Directory} files, files need to compress
      */
     compress: function(files){
-        var vcs = this.vcs;
-        vcs.checkout(files);
-        this.engine.compiler(files);
-        vcs.checkin(files);
+        var self = this,
+            vcs = self.vcs;
+
+        vcs.checkout(files, function(){
+            self.engine.compile(files, function(){
+                vcs.add(files, function(){
+                    vcs.checkin(files);
+                });
+            });
+        });
     }
 };
-
 var compressor = new Compressor(vcs, engine);
-engine.setCompiler('google');
-compressor.compress('a.js');
+engine.setCompiler(config.compilers['google']);
+compressor.compress('e:\\tfs2010\\Hotel\\Booking\\Branch\\Branch1108_1121\\Present\\WebResource\\Online\\JavaScript\\domestic\\lazyload.js');
 
 
 

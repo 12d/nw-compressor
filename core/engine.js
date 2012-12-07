@@ -5,18 +5,20 @@
  */
 function Engine(options){
     this.options = options;
+    this.compiler = options.compiler;
 }
 
 function getFileData(file, gap){
-    var info, fileStr;
+    var name, fileStr;
 
+    fileStr =  file;
     if(isArray(file)){
         fileStr = file.join(gap);
         file = file[0];
     }
-    info = file.split('.');
+    name = file.replace(/\.js$/, '');
     return {
-        name: info[0],
+        name: name,
         file: fileStr
     }
 };
@@ -27,20 +29,30 @@ var exec = require('child_process').exec,
     logger = new Log();
 
 Engine.prototype={
+    /**
+     * @param file
+     * @param {Function} [callback]
+     */
     compile: function(file, callback){
-        var options = this.options,
+        var compiler = this.compiler,
+            exitHandler = function (){
+                callback && callback();
+            },
             out;
 
-        out = exec(Util.replace(options.commandLine, getFileData(file, options.gap)));
-        out.on('stdout', function(data){
+        out = exec(Util.replace(compiler.commandLine, getFileData(file, compiler.gap)));
+        out.stdout.on('data', function(data){
             callback && callback(data);
+            out.removeListener('exit', exitHandler);
             logger.log(data, Log.NORMAL);
         });
-        out.on('stderr', function(data){
+        out.stderr.on('data', function(data){
             logger.log(data, Log.ERROR);
         });
+        out.on('exit', exitHandler);
     },
-    setCompiler: function(){
-
+    setCompiler: function(compiler){
+       this.compiler = compiler;
     }
 }
+module.exports = Engine;

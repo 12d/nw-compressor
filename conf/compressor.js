@@ -6,7 +6,7 @@
 module.exports = {
     compilers: {
         google:{
-            gap: '--js',
+            gap: ' --js ',
             commandLine: 'java -jar E:\\tools\\compiler-latest\\compiler.jar --js ${file} --js_output_file ${name}.min.js'
         },
         yui: {
