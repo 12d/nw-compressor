@@ -67,12 +67,28 @@
                         </div>
                     </div>
                     <div class="control-group">
+                        <label class="control-label">Settings</label>
+                        <div class="controls">
+                            <label class="checkbox inline span2">Recursion<input type="checkbox"/></label>
+                            <label class="checkbox inline span3">AutoCheckin<input type="checkbox"/></label>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="control-group">
                         <label class="control-label" for="J_selectFiles">Select Files</label>
                         <div class="controls">
                             <div class="input-append">
+                                <input type="file" multiple id="J_fileField" style="display: none;"/>
                                 <input class="span8" type="text" placeholder="File Path" readonly>
-                                <button class="btn btn-primary" type="button">Browse...</button>
+                                <button class="btn btn-primary" type="button" id="J_selectFiles">Browse...</button>
                             </div>
+                        </div>
+                    </div>
+                    -->
+                    <div class="control-group">
+                        <label class="control-label">Resources</label>
+                        <div class="controls">
+                             <input class="span6" type="text" id="J_filesPath" placeholder="Files Path">
                         </div>
                     </div>
                     <div class="control-group">
@@ -107,7 +123,8 @@
     </footer>
 
 </div><!--/.fluid-container-->
-
+        <script type="text/javascript" src="lib/jquery1.8.3.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
 
 </body>
 </html>
