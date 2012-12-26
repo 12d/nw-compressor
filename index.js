@@ -3,18 +3,14 @@
  * @date: 12-12-12 上午9:59
  * @descriptions
  */
-    /*
-var filesPath = $('#J_filesPath').val().trim();
+var Version = require('./core/version.js'),
+    DB = require('./core/database.js');
 
-filesPath && (function (){
-    var compressor = require('compressor.js'),
-        fs = require('fs');
+var db = new DB();
+db.connect('E:\\cxw\\version-ctrl\\s\\j\\data\\version.json', function (){
+    vers = new Version(db);
+    vers.refresh('/s/j/app/promo.js');
+    //db.close();
+});
 
-    fs.open(filesPath, function(err, fd){
-
-    });
-})();
-*/
-//compressor.engine.setCompiler(config.compilers['google']);
-//compressor.compress('e:\\tfs2010\\Hotel\\Booking\\Branch\\Branch1108_1121\\Present\\WebResource\\Online\\JavaScript\\domestic\\lazyload.js');
 
