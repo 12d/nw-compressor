@@ -39,8 +39,6 @@ Compressor.prototype = {
     }
 };
 var compressor = new Compressor(vcs, engine);
-engine.setCompiler(config.compilers['google']);
-compressor.compress('e:\\tfs2010\\Hotel\\Booking\\Branch\\Branch1108_1121\\Present\\WebResource\\Online\\JavaScript\\domestic\\lazyload.js');
 
-
+exports.module = compressor;
 

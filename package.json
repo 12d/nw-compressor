@@ -1,0 +1,8 @@
+{
+  "name": "SlimJS",
+  "main": "index.html",
+  "window": {
+	"icon": "images.jpg",
+	"toolbar": true
+  }
+}
