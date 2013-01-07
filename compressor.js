@@ -42,6 +42,3 @@ var compressor = new Compressor(vcs, engine);
 
 exports.module = compressor;
 
-
-
-
