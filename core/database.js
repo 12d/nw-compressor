@@ -8,7 +8,10 @@ var fs = require('fs');
 Database.CONNECTING = 1;
 Database.CONNECTED = 2;
 Database.CLOSED = 0;
-
+/**
+ * @event
+ * onSaved, updated database successfully
+ */
 
 function Database(options){
     var self = this;
@@ -25,7 +28,7 @@ Database.prototype = {
         if(!self._data) throw new Error('no database opened');
         fs.writeFile(self.connection, JSON.stringify(self._data), function (err) {
             if(err) throw new Error(err);
-            onSaved && onSaved.call(self);
+            onSaved && onSaved.call(self, self._data);
             self._data = null;
         });
 

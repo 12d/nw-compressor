@@ -18,6 +18,7 @@ function Releaser(options){
 }
 function copyFile(dir, newDir){
     fs.readFile(dir, function(err, data){
+        console.log(err);
         console.log(newDir);
         fs.writeFile(newDir, data);
     });
@@ -28,8 +29,8 @@ function addVersion(file, version){
 Releaser.prototype = {
     constructor: Releaser,
     release: function (file, version){
-        var self = this;
-        copyFile(file, self.options.releaseDir+addVersion(file, version))
+//        var self = this;
+        copyFile(file, addVersion(file, version));
     }
 }
 
