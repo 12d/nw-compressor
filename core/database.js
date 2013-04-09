@@ -44,7 +44,6 @@ Database.prototype = {
         self.status = Database.CONNECTING;
         fs.readFile(source, function (err, content){
             //JSON.parse is much more effecial, but will thow error when parsing comments text
-            console.log(content.toString());
             self._data = new Function('return '+content.toString())();
             self.status = Database.CONNECTED;
             callback && callback();
@@ -52,7 +51,7 @@ Database.prototype = {
 
         return self;
     },
-    update: function(key, val){
+    update: function(key, val, callback){
         if(!key || !val) return;
 
         var item = this._data[key]||{};
@@ -60,6 +59,7 @@ Database.prototype = {
         item.version = val;
         item.timestamp = +new Date;
         this._data[key] = item;
+        callback && callback(val);
         return this;
     },
     /**
@@ -73,7 +73,7 @@ Database.prototype = {
     },
     query: function (key, callback){
         if(!key) return;
-        callback && callback(this._data[key]);
+        callback(this._data[key]);
         return this;
     }
 

@@ -3,6 +3,8 @@
   "main": "index.html",
   "window": {
 	"icon": "images.jpg",
-	"toolbar": true
+	"toolbar": true,
+    "width": 1000,
+    "height": 600
   }
 }

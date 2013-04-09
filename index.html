@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <title>SlimJS</title>
-</head>
-<body>
-    div.wrap>
-</body>
-</html>
-    <meta charset="utf -8">
-    <tit le>Bo otstrap, from Twitter</title>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
+        html, body {
+            width:800;
+            overflow: auto;
+            padding-top: 30px;
         }
         .sidebar-nav {
             padding: 9px 0;
         }
     </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
-        <div class="container-fluid">
+        <div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -46,8 +39,8 @@
     </div>
 </div>
 
-<div class="container-fluid">
-    <div class="row-fluid">
+<div class="container">
+    <div class="row">
         <div class="span3">
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
@@ -64,22 +57,22 @@
                     <div class="control-group">
                         <label class="control-label" for="J_startDate">Start Date</label>
                         <div class="controls">
-                            <input type="date" id="J_startDate" class="span6" placeholder="Start Date">
+                            <input type="date" id="J_startDate" class="span4" placeholder="Start Date">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="J_endDate">End Date</label>
                         <div class="controls">
-                            <input type="date" id="J_endDate" class="span6" placeholder="End Date">
+                            <input type="date" id="J_endDate" class="span4" placeholder="End Date">
                         </div>
                     </div>
-                    <div class="control-group">
+                    <!--<div class="control-group">
                         <label class="control-label">Settings</label>
                         <div class="controls">
                             <label class="checkbox inline span2">Recursion<input type="checkbox"/></label>
                             <label class="checkbox inline span3">AutoCheckin<input type="checkbox"/></label>
                         </div>
-                    </div>
+                    </div>-->
                     <!--
                     <div class="control-group">
                         <label class="control-label" for="J_selectFiles">Select Files</label>
@@ -95,12 +88,12 @@
                     <div class="control-group">
                         <label class="control-label">Resources</label>
                         <div class="controls">
-                             <input class="span6" type="text" id="J_filesPath" placeholder="Files Path">
+                             <textarea id="J_fileList" class="span4" rows="7" placeholder="需要刷版本的JS"></textarea>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button class="btn btn-large btn-primary">Ready to Compile</button>
+                            <button id="J_compile" class="btn btn-large btn-primary">Ready to Compile</button>
                         </div>
                     </div>
                 </form>
@@ -108,22 +101,7 @@
 
     <hr/>
     <link type="text/css" href=""/>
-    <textarea readonly class="span12" rows="15">
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
-        2012-10-10: asdfasd/r\n
+    <textarea readonly class="span9" rows="10" id="J_logger">
     </textarea>
     <footer>
         <p>&copy; SlimJS 2012</p>
@@ -132,6 +110,9 @@
 </div><!--/.fluid-container-->
         <script type="text/javascript" src="lib/jquery1.8.3.min.js"></script>
         <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript">
+            app.init();
+        </script>
 
 </body>
 </html>

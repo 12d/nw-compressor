@@ -3,6 +3,7 @@
  * @date: 12-12-26 上午11:13
  * @descriptions
  */
+var updated = {};
 function Version (database, options){
     var self = this;
 
@@ -23,14 +24,21 @@ Version.prototype = {
             callback = version;
             version = undefined;
         }
+
         !version && db.query(file, function (item){
             db.update(file, parseInt(item && item.version||0)+1, callback);
         }) || db.update(file, version, callback);
+        db.query(file, function (newVersion){
+            updated[file] = newVersion;
+        });
         return this;
     },
     rollback: function (callback){
         this.database.update(file, version, callback);
         return this;
+    },
+    getUpdated: function(){
+        return updated;
     },
     save: function(){
         this.database.close();

@@ -1,0 +1,50 @@
+cityId:12
+cityName:南京
+cityEName:nanjing
+name:
+    keyword:
+        checkIn:2012 - 12 - 27
+checkOut:2012 - 12 - 28
+districtId:
+    locationId:
+        zoneId:
+            landmarkId:
+                star:2
+subway:0
+price:-
+    equip
+:
+99
+brand:0
+hotelName:名称 / 品牌关键词
+type:0
+range:
+    minLat:
+        maxLat:
+            minLng:
+                maxLng:
+                    dotX:
+                        dotY:
+                            radius:
+                                orderBy:star
+orderType:desc
+page:1
+pageSize:25
+viewType:emap
+blackList:
+    roomNum:0
+pageRequestType:1
+fltSubOrderID:-1
+flightAmount:-1
+flightSaveMoney:0
+isOnlyAirHotel:
+    promotion:F
+hasPromotion:T
+requestTravelMoney:F
+prepay:F
+cashback:F
+hasCashHotelPromotion:T
+NewEntity:T
+allHotels:
+    HotelSity:MjAxMi0xMi0yNyAxNTowMzozOHwz
+HotelSityEx:ctrip_hotels_ask_1
