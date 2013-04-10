@@ -75,6 +75,10 @@ Database.prototype = {
         if(!key) return;
         callback(this._data[key]);
         return this;
+    },
+    queryAll: function (callback){
+        callback(this._data);
+        return this;
     }
 
 }
