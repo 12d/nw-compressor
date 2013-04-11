@@ -3,9 +3,9 @@
  * @date: 12-12-6 下午3:02
  * @descriptions
  */
-function Engine(options){
-    this.options = options;
-    this.compiler = options.compiler;
+
+function Engine(plugin){
+    this.compiler = plugin;
 }
 
 function getFileData(file, gap){
@@ -23,10 +23,10 @@ function getFileData(file, gap){
     }
 };
 var exec = require('child_process').exec,
-    Log = require('../lib/util/log.js'),
     Util = require('../lib/util/helper.js'),
     isArray = Array.isArray,
-    logger = new Log();
+    Log = require('../lib/util/log.js'),
+    logger = Log.currentLogger;
 
 Engine.prototype={
     /**
@@ -44,12 +44,20 @@ Engine.prototype={
         out.stdout.on('data', function(data){
             callback && callback(data);
             out.removeListener('exit', exitHandler);
-            logger.log(data, Log.NORMAL);
+            Log.currentLogger.log(data, Log.NORMAL);
         });
         out.stderr.on('data', function(data){
-            logger.log(data, Log.ERROR);
+            Log.currentLogger.log(data, Log.ERROR);
         });
         out.on('exit', exitHandler);
+    },
+    /**
+     *
+     * @param {Buffer} fileData
+     * @param callback
+     */
+    compileData: function (fileData, callback){
+
     },
     setCompiler: function(compiler){
        this.compiler = compiler;
